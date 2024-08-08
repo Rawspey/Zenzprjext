@@ -25,7 +25,7 @@ Before you begin, ensure you have the following:
 ## Setup and Deployment
 
 ### 1. Clone the Repository
-git clone https://github.com/your-repo/terraform-azure-infrastructure.git
+git clone https://github.com/Rawspey/Zenzprjext.git
 cd terraform-azure-infrastructure
 ### 2. Configure Azure CLI
 Login to your Azure account using the Azure CLI:
