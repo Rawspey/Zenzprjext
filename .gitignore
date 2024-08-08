@@ -1,0 +1,22 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform crash log
+crash.log
+
+# Terraform plan files
+*.tfplan
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Terraform directories and files
+.terraform/
+.terraformrc
+terraform.rc
+
+# Ignore specific provider binary
+.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.114.0/windows_amd64/terraform-provider-azurerm_v3.114.0_x5.exe
+# General executable files
+*.exe
