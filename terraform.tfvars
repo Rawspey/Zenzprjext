@@ -1,0 +1,10 @@
+vnet_name           = "zenpay-vnet"
+address_space       = ["10.0.0.0/16"]
+location            = "southafricanorth"
+resource_group_name = "my-resource-group"
+admin_username = "adminuser"
+admin_password = "Password1234!"
+web_subnet_id = "web_subnet_id"
+db_subnet_id = "db_subnet_id"
+contact_email = "adminemailadrress@gmail.com"
+contact_phone = "+2340800000000"
