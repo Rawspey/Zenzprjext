@@ -12,7 +12,8 @@ permissions:
   contents: read
   issues: write
 
-azure-deploy:
+jobs:
+  azure-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Git Repository
@@ -21,6 +22,34 @@ azure-deploy:
           fetch-depth: 0
 
       - name: Login to Azure
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.7
+
+      - name: Terraform init and validate
+        run: |
+          terraform init
+          terraform validate
+
+      - name: Terraform plan
+        run: |
+          terraform plan
+
+      - name: Manual Approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: Rawspey
+          minimum-approvals: 1
+          issue-title: "Deploying v1.0.0 to prod"
+          issue-body: "Review the terraform plan, then approve or deny the deployment of v1.0.0 to prod."
+          exclude-workflow-initiator-as-approver: false
+
+      - name: Terraform apply
+        run: |
+          terraform apply
